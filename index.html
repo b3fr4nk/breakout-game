@@ -19,6 +19,7 @@
     <canvas id="myCanvas" width="480" height="320"></canvas>
 
     <script>
+        let score = 0;
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
         var ballRadius = 10;
@@ -81,12 +82,23 @@
                 ) {
                   dy = -dy;
                   b.status = 0;
+                  score++
+                  if (score === brickRowCount * brickColumnCount) {
+                    alert("YOU WIN, CONGRATULATIONS!");
+                    document.location.reload();
+                    clearInterval(interval); // Needed for Chrome to end game
+                  }
                 }
               }
             }
           }
         }
 
+        function drawScore() {
+          ctx.font = "16px Arial";
+          ctx.fillStyle = "#0095DD";
+          ctx.fillText(`Score: ${score}`, 8, 20);
+        }
 
         function drawBall() {
             ctx.beginPath();
@@ -126,6 +138,7 @@
             drawBall();
             drawPaddle();
             collisionDetection();
+            drawScore()
             
             if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
                 dx = -dx;
