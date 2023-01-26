@@ -114,7 +114,7 @@ function draw() {
       ball.dy = -ball.dy;
     } else {
       lives.loseLife();
-      if (!lives) {
+      if (lives.lives <= 0) {
         // eslint-disable-next-line no-alert
         alert('GAME OVER');
         document.location.reload();
