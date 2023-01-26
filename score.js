@@ -18,7 +18,7 @@ class Score {
   render(ctx) {
     ctx.font = this.font;
     ctx.fillStyle = this.color;
-    ctx.fillText(`${this.score}`);
+    ctx.fillText(`${this.score}`, 8, 20);
   }
 }
 
