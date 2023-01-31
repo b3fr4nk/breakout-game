@@ -89,7 +89,6 @@ function drawBricks() {
     for (let r = 0; r < brickRowCount; r += 1) {
       if (bricks[c][r].status === 1) {
         bricks[c][r].render(ctx);
-        console.log('brick');
       }
     }
   }
