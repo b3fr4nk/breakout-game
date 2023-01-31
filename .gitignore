@@ -2,3 +2,6 @@
 /package.json
 /package-lock.json
 /.eslintrc.js
+/lesson1.html
+/webpack.config.js
+
