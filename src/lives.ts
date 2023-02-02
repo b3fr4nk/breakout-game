@@ -1,5 +1,13 @@
 class Lives {
-  constructor(x, y, font, color, canvas) {
+
+  x:number
+  y:number
+  lives:number
+  font:string
+  color:string
+  canvas:any
+
+  constructor(x:number, y:number, font:string, color:string, canvas:any) {
     this.x = x;
     this.y = y;
     this.lives = 3;
@@ -8,7 +16,7 @@ class Lives {
     this.canvas = canvas;
   }
 
-  render(ctx) {
+  render(ctx:any) {
     ctx.font = this.font;
     ctx.fillStyle = this.color;
     ctx.fillText(`${this.lives}`, this.canvas.width - 65, 20);

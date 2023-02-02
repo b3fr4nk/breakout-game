@@ -1,36 +1,36 @@
 /* eslint-disable import/extensions */
-import Lives from './lives.js';
-import Paddle from './paddle.js';
-import Ball from './ball.js';
-import Background from './background.js';
-import Brick from './brick.js';
-import Score from './score.js';
+import Lives from './lives';
+import Paddle from './paddle';
+import Ball from './ball';
+import Background from './background';
+import Brick from './brick';
+import Score from './score';
 
 let rightPressed = false;
 let leftPressed = false;
 
-const canvas = document.getElementById('myCanvas');
-const ctx = canvas.getContext('2d');
+const canvas:any = document.getElementById('myCanvas');
+const ctx:any = canvas.getContext('2d');
 
-const paddleWidth = 75;
-const paddleHeight = 10;
-const paddle = new Paddle((canvas.width) / 2, (canvas.height - paddleHeight), paddleWidth, paddleHeight, '#0095DD');
+const paddleWidth:number = 75;
+const paddleHeight:number = 10;
+const paddle:Paddle = new Paddle((canvas.width) / 2, (canvas.height - paddleHeight), paddleWidth, paddleHeight, '#0095DD');
 
-const ball = new Ball(canvas.width / 2, canvas.height / 2, 10, '#0095DD');
+const ball:Ball = new Ball(canvas.width / 2, canvas.height / 2, 10, '#0095DD');
 
-const bg = new Background('#fefefe', canvas);
+const bg:Background = new Background('#fefefe', canvas);
 
-const score = new Score(8, 20, '#0095DD', '16px Arial');
-const lives = new Lives(canvas.width - 65, 20, '#0095DD', '16px Arial', canvas);
+const score:Score = new Score(8, 20, '#0095DD', '16px Arial');
+const lives:Lives = new Lives(canvas.width - 65, 20, '#0095DD', '16px Arial', canvas);
 
-const brickRowCount = 3;
-const brickColumnCount = 5;
-const brickWidth = 75;
-const brickHeight = 20;
-const brickPadding = 10;
-const brickOffsetTop = 30;
-const brickOffsetLeft = 30;
-const bricks = [];
+const brickRowCount:number = 3;
+const brickColumnCount:number = 5;
+const brickWidth:number = 75;
+const brickHeight:number = 20;
+const brickPadding:number = 10;
+const brickOffsetTop:number = 30;
+const brickOffsetLeft:number = 30;
+const bricks:Brick[][] = [];
 for (let c = 0; c < brickColumnCount; c += 1) {
   bricks[c] = [];
   for (let r = 0; r < brickRowCount; r += 1) {
@@ -40,7 +40,7 @@ for (let c = 0; c < brickColumnCount; c += 1) {
   }
 }
 
-function keyUpHandler(e) {
+function keyUpHandler(e:any) {
   if (e.key === 'Right' || e.key === 'ArrowRight') {
     rightPressed = false;
   } else if (e.key === 'Left' || e.key === 'ArrowLeft') {
@@ -48,7 +48,7 @@ function keyUpHandler(e) {
   }
 }
 
-function keyDownHandler(e) {
+function keyDownHandler(e:any) {
   if (e.key === 'Right' || e.key === 'ArrowRight') {
     rightPressed = true;
   } else if (e.key === 'Left' || e.key === 'ArrowLeft') {
@@ -56,7 +56,7 @@ function keyDownHandler(e) {
   }
 }
 
-function mouseMoveHandler(e) {
+function mouseMoveHandler(e:any) {
   const relativeX = e.clientX - canvas.offsetLeft;
   if (relativeX > 0 && relativeX < canvas.width) {
     paddle.x = relativeX - paddleWidth / 2;
@@ -84,7 +84,7 @@ function collisionDetection() {
   }
 }
 
-function drawBricks() {
+function drawBricks(ctx:any) {
   for (let c = 0; c < brickColumnCount; c += 1) {
     for (let r = 0; r < brickRowCount; r += 1) {
       if (bricks[c][r].status === 1) {

@@ -1,8 +1,16 @@
 /* eslint-disable import/extensions */
-import Rect from './rect.js';
+import Rect from './rect';
 
 class Paddle extends Rect {
-  drawPaddle(context) {
+
+  canvas:any
+
+  constructor(x:number, y:number, width:number, height:number, canvas:any){
+    super(x, y, width, height)
+    this.canvas = canvas
+  }
+
+  drawPaddle(context:any) {
     context.beginPath();
     context.rect(this.x, this.width - this.x, this.width, this.height);
     context.fillStyle = '#0095DD';
@@ -10,9 +18,9 @@ class Paddle extends Rect {
     context.closePath();
   }
 
-  updatePaddle() {
+  updatePaddle(context:any) {
     this.x = (this.canvas.width - this.width) / 2;
-    this.drawPaddle();
+    this.drawPaddle(context);
   }
 }
 

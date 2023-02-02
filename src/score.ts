@@ -1,5 +1,11 @@
 class Score {
-  constructor(x, y, color, font) {
+  x:number
+  y:number
+  color:string
+  font:string
+  score:number
+
+  constructor(x:number, y:number, color:string, font:string) {
     this.x = x;
     this.y = y;
     this.color = color;
@@ -12,10 +18,10 @@ class Score {
   }
 
   reset() {
-    this.points = 0;
+    this.score = 0;
   }
 
-  render(ctx) {
+  render(ctx:any) {
     ctx.font = this.font;
     ctx.fillStyle = this.color;
     ctx.fillText(`${this.score}`, 8, 20);
